@@ -1,0 +1,14 @@
+footer{
+    background: #313131;
+    color: #ffffff;
+    bottom:0; 
+    width:100%;
+    margin-top: 10px;
+  }
+  .textFooter{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .textFooter p{
+    margin:0;
+  }
