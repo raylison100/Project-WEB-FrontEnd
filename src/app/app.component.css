@@ -1,3 +1,75 @@
-.principal{
-    margin-top: 100px;
-}
+/* SEARCH - HOMEPAGE */
+.section-search > .jumbotron{
+    padding-top: 6em;
+    padding-bottom: 3em;
+    color: #ffffff;
+    font-size: 3em;
+    background: url("../assets/img/bg.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .section-search .form-control:focus {
+    outline: 0 !important;
+    border-color: initial;
+    box-shadow: none;
+  }
+  .section-search input{
+    color: #549f46;
+  }
+  .section-search input:focus{
+    color: #549f46;
+  }
+  .section-search .btn-outline-secondary{
+    background-color: #fff;
+    color: #549f46;
+  }
+  
+  /* NEXT EVENTS */
+  .section-calendar h1{
+    color: #549f46;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .section-calendar .info-event > [class*="col-sm-"]{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .section-calendar .data-event h3{
+    color: #313131;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+  }
+  .section-calendar .data-event h2{
+    color: #549f46;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+  }
+  .section-calendar .description-event p{
+    margin: 0;
+    text-align: right;
+  }
+  
+  /* SLIDER */
+  .section-slider{
+    margin-top: 3em;
+  }
+  
+  /* ABOUT US */
+  .section-aboutus{
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+  .section-aboutus h1{
+    color: #549f46;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .section-aboutus p{
+    color: #313131;
+    font-size: 1.3em;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
