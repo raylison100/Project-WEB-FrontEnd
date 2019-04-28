@@ -2,20 +2,20 @@ version: '3.5'
 
 services:
 
-  web-project:
-    container_name: web-frontend
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
-    ports:
-      - '4200:4200'
-  # web-project-pro:
-  #   container_name: web-frontend-prod
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - '80:80'
+#  web-project:
+#    container_name: web-frontend
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    volumes:
+#      - '.:/usr/src/app'
+#      - '/usr/src/app/node_modules'
+#    ports:
+#      - '4200:4200'
+  web-project-pro:
+     container_name: web-frontend-prod
+     build:
+       context: .
+       dockerfile: Dockerfile
+     ports:
+       - '80:80'
