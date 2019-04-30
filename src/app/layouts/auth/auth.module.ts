@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
-import { AuthRoutes } from './auth.routing';
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 import { AuthComponent } from './auth.component';
+import { AuthRoutingModule } from './auth.routing.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { AuthComponent } from './auth.component';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(AuthRoutes)
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }

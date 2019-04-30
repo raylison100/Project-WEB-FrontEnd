@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DefaultComponent } from '../../pages/default/default.component';
 import { PosterComponent } from '../../pages/poster/poster.component';
@@ -9,3 +10,11 @@ export const AdminRoutes: Routes = [
     { path: 'poster',       component: PosterComponent },
     { path: 'profile',      component: ProfileComponent },
 ];
+
+@NgModule({
+    imports: [
+      RouterModule.forRoot(AdminRoutes)
+    ],
+    exports: [RouterModule]
+  })
+  export class AdminRoutingModule { }

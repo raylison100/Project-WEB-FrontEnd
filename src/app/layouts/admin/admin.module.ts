@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
-import { ComponetsModule } from '../../componets/componets.module';
-
-import { AdminRoutes } from './admin.routing';
+import { AdminRoutingModule } from './admin.routing.module';
 import { DefaultComponent } from '../../pages/default/default.component';
 import { PosterComponent } from '../../pages/poster/poster.component';
 import { ProfileComponent } from '../../pages/profile/profile.component';
@@ -20,8 +17,7 @@ import { AdminComponent } from './admin.component';
   ],
   imports: [
     CommonModule,
-    ComponetsModule,
-    RouterModule.forChild(AdminRoutes),
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }
