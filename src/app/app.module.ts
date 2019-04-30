@@ -1,20 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ComponetsModule } from './componets/componets.module';
+
+import { AdminModule } from './layouts/admin/admin.module';
+import { AuthModule } from './layouts/auth/auth.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavComponent } from './nav/nav.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent,
-    NavComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
+    ComponetsModule,
+    AdminModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
