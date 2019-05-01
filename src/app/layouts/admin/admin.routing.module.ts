@@ -6,9 +6,9 @@ import { PosterComponent } from '../../pages/poster/poster.component';
 import { ProfileComponent } from '../../pages/profile/profile.component';
 
 export const AdminRoutes: Routes = [
-    { path: 'default',      component: DefaultComponent },
-    { path: 'poster',       component: PosterComponent },
-    { path: 'profile',      component: ProfileComponent },
+  { path: 'default',      component: DefaultComponent },
+  { path: 'poster',       component: PosterComponent },
+  { path: 'profile',      component: ProfileComponent },
 ];
 
 @NgModule({
