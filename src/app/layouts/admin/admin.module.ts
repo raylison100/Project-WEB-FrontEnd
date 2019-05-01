@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin.routing.module';
 import { DefaultComponent } from '../../pages/default/default.component';
 import { PosterComponent } from '../../pages/poster/poster.component';
 import { ProfileComponent } from '../../pages/profile/profile.component';
-import { AdminComponent } from './admin.component';
+import { FooterComponent } from '../../componets/footer/footer.component';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { AdminComponent } from './admin.component';
     DefaultComponent,
     PosterComponent,
     ProfileComponent,
-    AdminComponent
+    FooterComponent
   ],
   imports: [
     CommonModule,
