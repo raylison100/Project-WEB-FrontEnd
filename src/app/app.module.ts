@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing.module';
 
-import { AdminModule } from './layouts/admin/admin.module';
-import { AuthModule } from './layouts/auth/auth.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './componets/nav/nav.component';
 

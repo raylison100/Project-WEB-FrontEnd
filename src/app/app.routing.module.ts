@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthModule } from './layouts/auth/auth.module';
-import { AdminModule } from './layouts/admin/admin.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 const routes: Routes = [  
   {
