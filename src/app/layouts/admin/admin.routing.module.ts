@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DefaultComponent } from '../../pages/default/default.component';
-import { PosterComponent } from '../../pages/poster/poster.component';
-import { ProfileComponent } from '../../pages/profile/profile.component';
+import { DefaultComponent } from '../../componets/pages/default/default.component';
+import { PosterComponent } from '../../componets/pages/poster/poster.component';
+import { ProfileComponent } from '../../componets/pages/profile/profile.component';
 
 export const AdminRoutes: Routes = [
   { path: 'default',      component: DefaultComponent },
