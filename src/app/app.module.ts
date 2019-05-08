@@ -8,7 +8,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './componets/nav/nav.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,13 +16,15 @@ import { NavComponent } from './componets/nav/nav.component';
     NavComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     AdminModule,
     AuthModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

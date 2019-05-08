@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from '../../componets/pages/login/login.component';
 import { RegisterComponent } from '../../componets/pages/register/register.component';
 import { AuthRoutingModule } from './auth.routing.module';
+import { LoginService } from 'src/app/services/auth/login.service';
+import { SharedService } from 'src/app/services/shared.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,8 +14,15 @@ import { AuthRoutingModule } from './auth.routing.module';
     RegisterComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
-    AuthRoutingModule
-  ]
+    AuthRoutingModule,
+ 
+  ],
+  providers: [
+    SharedService,
+    LoginService
+  ],
+
 })
 export class AuthModule { }

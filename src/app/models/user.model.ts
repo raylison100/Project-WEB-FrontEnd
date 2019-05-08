@@ -1,5 +1,9 @@
 export class UserModel{
-    private name: String;
-    private email: String;
-    private senha: String; 
+    constructor(
+        public id: string,
+        public name: string,
+        public email: string,
+        public senha: string,
+        public profile: string
+    ){}
 }
