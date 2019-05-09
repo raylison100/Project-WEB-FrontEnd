@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  showTemplate : boolean = false;
+  public shared: SharedService;
+
+  constructor() {
+    this.shared = SharedService.getInstance();
+   }
 
   ngOnInit() {
+    console.log(this.shared.user)
   }
 
 }

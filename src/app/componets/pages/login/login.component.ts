@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     }
 
   ngOnInit() {
+    
   }
 
   login(){
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit {
         this.shared.user = userAuthentication.user;
         this.shared.user.profile = this.shared.user.profile.substring(5);
         this.shared.showTemplate.emit(true);
-        this.router.navigate(['default']);
+        this.teste();
+        // this.router.navigate(['default']);
     },err => {
       this.shared.token = null;
       this.shared.user = null;
@@ -41,6 +43,10 @@ export class LoginComponent implements OnInit {
       this.message =  "Erro";
     });
   } 
+
+  teste(){
+    console.log(this.shared)
+  }
 
   cancelLogin(){
     this.message = '';
