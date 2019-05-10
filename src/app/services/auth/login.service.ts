@@ -14,4 +14,8 @@ export class LoginService {
       return this.http.post(`${API_BACKEND}/api/auth`,user);
   }
 
+  public logout(){
+
+  }
+
 }

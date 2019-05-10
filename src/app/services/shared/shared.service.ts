@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { UserModel } from '../models/user.model';
+import { UserModel } from '../../models/user.model';
  
 
 @Injectable({
@@ -10,7 +10,7 @@ export class SharedService {
   private static instance:SharedService = null;
   user : UserModel;
   token : String;
-  showTemplate = new EventEmitter<boolean>();
+  showTemplate: boolean;
 
   constructor() {
     return SharedService.instance =  SharedService.instance || this;

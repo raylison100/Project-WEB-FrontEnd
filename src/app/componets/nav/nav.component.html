@@ -1,26 +1,83 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background: linear-gradient(90deg,#70d467 0,#6fbbfa);">
-  <div class="d-flex flex-grow-1">
-      <span class="w-100 d-lg-none d-block"></span>
-      <a class="navbar-brand" routerLink="">
-          <img src="../../assets/img/logo.png" alt="BetterWorld" width="80px">
-      </a>
-      <div class="w-100 text-right">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-      </div>
-  </div>
-  <div class="collapse navbar-collapse" id="myNavbar7">
-      <ul class="navbar-nav ml-auto flex-nowrap">
-          <li class="nav-item">
-              <a class="nav-link text-white" [routerLink]="['login']">Entrar</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link text-white" [routerLink]="['register']">Cadastrar</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link text-white" [routerLink]="['poster']">Publicar</a>
-          </li>
-      </ul>
-  </div>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light"
+    style="background: linear-gradient(90deg,#70d467 0,#6fbbfa);">
+    <div class="d-flex flex-grow-1">
+        <span class="w-100 d-lg-none d-block"></span>
+        <a class="navbar-brand" routerLink="">
+            <img src="../../assets/img/logo.png" alt="BetterWorld" width="80px">
+        </a>
+        <div class="w-100 text-right">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar7" *ngIf="!shared.showTemplate; else elseBlock">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+            <li class="nav-item">
+                <a class="nav-link text-white" [routerLink]="['login']">Entrar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" [routerLink]="['register']">Cadastrar</a>
+            </li>
+        </ul>
+    </div>
+    <ng-template #elseBlock class="collapse navbar-collapse" id="myNavbar7">
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+            <li class="nav-item dropdown d-md-down-none" dropdown="" placement="bottom right"><a aria-haspopup="true"
+                    class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#" role="button"><i
+                        class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+
+            </li>
+            <li class="nav-item dropdown d-md-down-none" dropdown="" placement="bottom right"><a aria-haspopup="true"
+                    class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#" role="button"><i
+                        class="icon-list"></i><span class="badge badge-pill badge-warning">15</span></a>
+
+            </li>
+            <li class="nav-item dropdown d-md-down-none" dropdown="" placement="bottom right"><a aria-haspopup="true"
+                    class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#" role="button"><i
+                        class="icon-envelope-letter"></i><span class="badge badge-pill badge-info">7</span></a>
+
+            </li>
+            <li class="nav-item" placement="bottom-right">
+                <a class="nav-link pr-0 dropdown-toggle" role="button" id="dropdownProfile" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <div class="media align-items-center">
+                        <span>
+                            <img class="rounded-circle" alt="Image placeholder"
+                                src="assets/img/theme/team-4-800x800.jpg" width="40px">
+                        </span>
+                        <span class="mb-0 text-sm  font-weight-bold">{{shared.user.email}}</span>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownProfile">
+                            <div class="dropdown-header text-center">
+                                <h6 class="text-overflow m-0">Welcome!</h6>
+                            </div>
+                            <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span
+                                    class="badge badge-success">42</span>
+                            </a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span
+                                    class="badge badge-danger">42</span>
+                            </a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comment<span
+                                    class="badge badge-warning">42</span>
+                            </a>
+                            <a class="dropdown-item" routerLinkActive="active" [routerLink]="['profile']">
+                                <i class="ni ni-single-02"></i>
+                                <span>My profile</span>
+                            </a>
+                            <a class="dropdown-item" routerLinkActive="active" [routerLink]="['poster']">
+                                <i class="ni ni-single-02"></i>
+                                <span>Postes</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">
+                                <i class="ni ni-user-run"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </ng-template>
 </nav>

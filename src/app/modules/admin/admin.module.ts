@@ -6,7 +6,8 @@ import { DefaultComponent } from '../../componets/pages/default/default.componen
 import { PosterComponent } from '../../componets/pages/poster/poster.component';
 import { ProfileComponent } from '../../componets/pages/profile/profile.component';
 import { FooterComponent } from '../../componets/footer/footer.component';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { SharedService } from 'src/app/services/shared/shared.service';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UserService } from 'src/app/services/user.service';
     AdminRoutingModule
   ],
   providers: [
-    UserService
+    UserService,
+    SharedService
   ]
 })
 export class AdminModule { }

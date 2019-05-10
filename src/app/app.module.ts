@@ -9,7 +9,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './componets/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedService } from './services/shared.service';
+import { SharedService } from './services/shared/shared.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { SharedService } from './services/shared.service';
     AuthModule
   ],
   providers: [
-    SharedService
+   SharedService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
 import { LoginService } from 'src/app/services/auth/login.service';
-import { SharedService } from 'src/app/services/shared.service';
+import { SharedService } from 'src/app/services/shared/shared.service';
 import { Router } from '@angular/router';
 import { CurrentUser } from 'src/app/models/current-user.model';
 
@@ -33,25 +33,18 @@ export class LoginComponent implements OnInit {
         this.shared.token = userAuthentication.token;
         this.shared.user = userAuthentication.user;
         this.shared.user.profile = this.shared.user.profile.substring(5);
-        this.shared.showTemplate.emit(true);
+        this.shared.showTemplate = true;
         this.teste();
-        // this.router.navigate(['default']);
+        this.router.navigate(['default']);
     },err => {
       this.shared.token = null;
       this.shared.user = null;
-      this.shared.showTemplate.emit(false);
+      this.shared.showTemplate = false;
       this.message =  "Erro";
     });
   } 
 
   teste(){
     console.log(this.shared)
-  }
-
-  cancelLogin(){
-    this.message = '';
-    this.user = new UserModel('','','','','');
-    window.location.href = '/login';
-    window.location.reload();
   }
 }
