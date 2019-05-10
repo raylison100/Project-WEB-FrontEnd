@@ -9,3 +9,13 @@
     color: #549f46;
     font-size: 1.5em;
   }
+
+.drop-profile{
+  right: 0;
+  left: unset;
+}
+
+.dropdown-item-profile{
+  display: flex;
+  justify-content: space-between;
+}

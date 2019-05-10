@@ -1,12 +1,12 @@
-    <div class="container">
-    <div class="header-body text-center mb-7">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-6">
-          <h1 class="text-success">Bem Vindo!</h1>
-        </div>
+<div class="container">
+  <div class="header-body text-center mb-7">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-6">
+        <h1 class="text-success">Bem Vindo!</h1>
       </div>
     </div>
   </div>
+</div>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7">
@@ -14,14 +14,10 @@
         <div class="card-header bg-light">
           <div class="text-center text-secondary mt-2 mb-3"><small>Sign in with</small></div>
           <div class="btn-wrapper text-center">
-            <a class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon"><img src="../assets/img/icons/common/facebook.png"></span>
-              <span class="btn-inner--text text-secondary">Facebook</span>
-            </a>
-            <a class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.png"></span>
-              <span class="btn-inner--text text-secondary">Google</span>
-            </a>
+            <a class="btn btn-neutral btn-icon btn-inner--text text-secondary" href="#"><i class="text-primary fa fa-facebook fa-2x"
+                aria-hidden="true"></i>&nbsp; Facebook</a>
+            <a class="btn btn-neutral btn-icon btn-inner--text text-secondary" href="#"><i class="text-danger fa fa-google fa-2x"
+                aria-hidden="true"></i>&nbsp; Google</a>
           </div>
         </div>
         <div class="card-body px-lg-5 py-lg-3">
@@ -30,45 +26,34 @@
           </div>
           <form role="form" #form="ngForm" (ngSubmit)="login()">
             <div class="alert alert-error text-center text-danger" role="alert" *ngIf="message">
-                <strong>Invalid email or password</strong>
+              <strong>Invalid email or password</strong>
             </div>
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div for="inputEmail" class="input-group-prepend">
-                  <span class="input-group-text"><img src="https://img.icons8.com/ios/18/298A08/new-post-filled.png"></span>
+                  <span class="input-group-text">
+                    <i class="text-success fa fa-envelope" aria-hidden="true"></i>
+                  </span>
                 </div>
-                <input 
-                    [(ngModel)]="user.email"
-                    id="inputEmail"
-                    #email="ngModel"
-                    class="form-control"
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    email>
+                <input [(ngModel)]="user.email" id="inputEmail" #email="ngModel" class="form-control" name="email"
+                  placeholder="Email" type="email" email>
               </div>
               <div class="text-center text-danger">
-                  <span class="help-block" *ngIf="email.invalid && email.dirty">Email is invalid</span>
+                <span class="help-block" *ngIf="email.invalid && email.dirty">Email is invalid</span>
               </div>
             </div>
             <div class="form-group">
               <div for="inputPassword" class="input-group input-group-alternative">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><img src="https://img.icons8.com/ios/18/298A08/forgot-password-filled.png"></span>
+                  <span class="input-group-text">
+                      <i class="text-success fa fa-key" aria-hidden="true"></i>
+                  </span>
                 </div>
-                    <input 
-                    class="form-control" 
-                    placeholder="Password" 
-                    type="password"
-                    name="password"
-                    [(ngModel)]="user.password"
-                    id="inputPassword"
-                    #password="ngModel"                    
-                    type="password"
-                    required>               
+                <input class="form-control" placeholder="Password" type="password" name="password"
+                  [(ngModel)]="user.password" id="inputPassword" #password="ngModel" type="password" required>
               </div>
               <div class="text-center text-danger">
-                  <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>
+                <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>
               </div>
             </div>
             <div class="custom-control custom-control-alternative custom-checkbox">
@@ -85,7 +70,7 @@
                 <a class="text-white"><small>Forgot password?</small></a>
               </div>
               <div class="col-12 col-sm-6">
-                <a  class="text-white"><small>Create new account</small></a>
+                <a class="text-white"><small>Create new account</small></a>
               </div>
             </div>
           </form>
