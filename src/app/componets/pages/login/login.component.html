@@ -26,20 +26,20 @@
           </div>
           <form role="form" #form="ngForm" (ngSubmit)="login()">
             <div class="alert alert-error text-center text-danger" role="alert" *ngIf="message">
-              <strong>Invalid email or password</strong>
+              <strong>Invalid username or password</strong>
             </div>
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
-                <div for="inputEmail" class="input-group-prepend">
+                <div for="inputUsername" class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="text-success fa fa-envelope" aria-hidden="true"></i>
                   </span>
                 </div>
-                <input [(ngModel)]="user.email" id="inputEmail" #email="ngModel" class="form-control" name="email"
+                <input [(ngModel)]="username" id="inputUsername" #usernameModel="ngModel" class="form-control" name="username"
                   placeholder="Email" type="email" email>
               </div>
               <div class="text-center text-danger">
-                <span class="help-block" *ngIf="email.invalid && email.dirty">Email is invalid</span>
+                <span class="help-block" *ngIf="username.invalid && username.dirty">Email is invalid format. </span>
               </div>
             </div>
             <div class="form-group">
@@ -50,7 +50,7 @@
                   </span>
                 </div>
                 <input class="form-control" placeholder="Password" type="password" name="password"
-                  [(ngModel)]="user.password" id="inputPassword" #password="ngModel" type="password" required>
+                [(ngModel)]="password" id="inputPassword" #passwordModel="ngModel" type="password" required>
               </div>
               <div class="text-center text-danger">
                 <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>
