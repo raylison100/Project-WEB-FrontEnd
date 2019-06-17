@@ -5,6 +5,8 @@ import { CurrentAuthLogin } from 'src/app/models/current-auth-login.model';
 import { Observable } from 'rxjs';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { UserModel } from 'src/app/models/user.model';
+import { BsModalService, BsModalRef, ModalContainerComponent } from 'ngx-bootstrap/modal';
+import { AlertModalComponent } from '../../alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -22,9 +24,12 @@ export class LoginComponent implements OnInit {
   shared : SharedService;
   message: string;
 
+  bsModalRef: BsModalRef;
+
   constructor(
     private loginService: LoginService,
     private router: Router,
+    private modalService: BsModalService,
     ) {
       this.shared = SharedService.getInstance()
     }
@@ -34,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    // this.loginService.login(this.username,this.password).subscribe(console.log) 
+    
     this.currentAuthLogin$ = this.loginService.login(this.username,this.password);
     this.currentAuthLogin$.subscribe((currentAuthLogin: CurrentAuthLogin) => {
               this.shared.token = currentAuthLogin.access_token;
@@ -53,6 +58,10 @@ export class LoginComponent implements OnInit {
       this.shared.user = usermodel;
       this.shared.showTemplate = true
       this.router.navigate(['default'])
+      this.bsModalRef = this.modalService.show(AlertModalComponent);
+      this.bsModalRef.content.type = 'success';
+      this.bsModalRef.content.message = 'Bem Vindo';
+
   },err => {   
     this.shared.user = null;
     this.shared.showTemplate = false;

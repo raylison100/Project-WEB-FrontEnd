@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoginComponent } from '../../componets/pages/login/login.component';
-import { RegisterComponent } from '../../componets/pages/register/register.component';
+import { LoginComponent } from '../../components/pages/login/login.component';
+import { RegisterComponent } from '../../components/pages/register/register.component';
 import { AuthRoutingModule } from './auth.routing.module';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { SharedService } from 'src/app/services/shared/shared.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     CommonModule,
     AuthRoutingModule,
- 
+    ReactiveFormsModule 
   ],
   providers: [
     SharedService,

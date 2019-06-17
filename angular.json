@@ -22,14 +22,10 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "styles": [ 
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
             ],
             "es5BrowserSupport": true
           },

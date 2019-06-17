@@ -11,6 +11,8 @@ export class NavComponent implements OnInit {
   showTemplate : boolean = false;
   public shared: SharedService;
 
+  isCollapsed = true;
+
   constructor() {
     this.shared = SharedService.getInstance();
    }
@@ -19,4 +21,7 @@ export class NavComponent implements OnInit {
     console.log(this.shared.showTemplate)
   }
 
+  closeCollapse(){
+    this.isCollapsed = true;
+  }
 }

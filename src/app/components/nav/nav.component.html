@@ -7,23 +7,21 @@
             <img src="../../assets/img/logo.png" alt="BetterWorld" width="80px">
         </a>
         <div class="w-100 text-right">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
+            <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar7" *ngIf="!shared.showTemplate; else elseBlock">
-        <ul class="navbar-nav ml-auto flex-nowrap">
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+        <ul *ngIf="!shared.showTemplate" class="navbar-nav ml-auto flex-nowrap">
             <li class="nav-item">
-                <a class="nav-link text-white" [routerLink]="['login']">Entrar</a>
+                <a class="nav-link text-white" [routerLink]="['login']" (click)="closeCollapse()">Entrar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" [routerLink]="['register']">Cadastrar</a>
+                <a class="nav-link text-white" [routerLink]="['register']" (click)="closeCollapse()">Cadastrar</a>
             </li>
         </ul>
-    </div>
-    <ng-template #elseBlock class="collapse navbar-collapse" id="myNavbar7">
-        <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <ul *ngIf="shared.showTemplate" class="navbar-nav ml-auto flex-nowrap">
             <li class="nav-item dropdown d-md-down-none" placement="bottom right">
                 <a aria-haspopup="true" class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#"
                     role="button">
@@ -31,27 +29,28 @@
                 </a>
             </li>
             <li class="nav-item dropdown d-md-down-none" dropdown="" placement="bottom right">
-                <a aria-haspopup="true"
-                    class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#" role="button">
+                <a aria-haspopup="true" class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#"
+                    role="button">
                     <i class="fa fa-tasks">&nbsp;</i><span class="badge badge-pill badge-warning">15</span>
                 </a>
             </li>
             <li class="nav-item dropdown d-md-down-none" dropdown="" placement="bottom right">
-                <a aria-haspopup="true"
-                    class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#" role="button">
+                <a aria-haspopup="true" class="nav-link" data-toggle="dropdown" dropdowntoggle="" href="#"
+                    role="button">
                     <i class="fa fa-comments">&nbsp;</i><span class="badge badge-pill badge-info">7</span>
                 </a>
             </li>
-            <li class="nav-item" placement="bottom-right">
-                <a class="nav-link pr-0 dropdown-toggle" role="button" id="dropdownProfile" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <span>
+            <li class="nav-item" class="btn-group" dropdown placement="bottom right">
+                <button id="button-alignment" dropdownToggle type="button" class="btn dropdown-toggle"
+                    aria-controls="dropdown-alignment"><span>
                         <img class="rounded-circle" alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg"
                             width="40px">
                     </span>
-                    <span class="mb-0 text-sm  font-weight-bold">{{shared.user.email}}</span>
-                </a>
-                <div class="drop-profile dropdown-menu col-2" aria-labelledby="dropdownProfile">
+                    <span class="mb-0 text-sm  font-weight-bold"> {{shared.user.email}}</span>
+                </button>
+
+                <div id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right col-2" role="menu"
+                    aria-labelledby="button-alignment">
                     <div class="dropdown-header text-center">
                         <h6 class="text-overflow m-0">Welcome!</h6>
                     </div>
@@ -84,5 +83,5 @@
                 </div>
             </li>
         </ul>
-    </ng-template>
+    </div>
 </nav>

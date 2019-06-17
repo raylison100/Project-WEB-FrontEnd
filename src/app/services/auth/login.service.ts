@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CurrentAuthLogin } from 'src/app/models/current-auth-login.model';
 import { environment } from 'src/environments/environment';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 import { UserModel } from 'src/app/models/user.model';
 
 @Injectable({
@@ -28,7 +28,8 @@ export class LoginService {
 
     return this.http.post<CurrentAuthLogin>(`${environment.API_BACKEND}/oauth/token`, requestData)
       .pipe(
-        tap(console.log)
+        tap(console.log),
+        take(1)
       );  
   }
 
@@ -39,9 +40,9 @@ export class LoginService {
         'Authorization': 'Bearer '+ token
       })
     };
-    console.log("opa")
     return this.http.get<UserModel>(`${environment.API_BACKEND}/authentication/user`,httpOptions).pipe(
-      tap(console.log)
+      tap(console.log),
+      take(1)
     );
   }
 }
