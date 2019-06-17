@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   submitted = false;
 
+  res : any;
+
   constructor(
     private fb: FormBuilder,
     private userService : UserService,
@@ -26,7 +28,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
 
     this.form = this.fb.group({
-      nome    : [null,[Validators.required,Validators.minLength(3),Validators.maxLength(30)]],
+      name    : [null,[Validators.required,Validators.minLength(3),Validators.maxLength(30)]],
       email   : [null,[Validators.required,Validators.email]],
       password: [null,[Validators.required,Validators.minLength(8),Validators.maxLength(15)]]
     });
@@ -36,9 +38,10 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     if (this.form.valid){      
       this.user = this.form.value;
-      console.log(this.user)
+      // console.log(this.user)
+      this.userService.createOrUpdate(this.user).subscribe(res => this.res = res, error => console.log(error.error.message));
     }
-    // this.userService.createOrUpdate(this.user);
+    
   }
 
   hasError(field: string){

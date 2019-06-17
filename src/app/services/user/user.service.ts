@@ -12,22 +12,22 @@ export class UserService {
 
   createOrUpdate(user: UserModel){
     if(user.id != null && user.id != ''){
-        return this.http.put(`${environment.API_BACKEND}/user`,user);
+        return this.http.put(`${environment.API_BACKEND}/users`,user);
     }else{
       user.id = null;
-      return this.http.post(`${environment.API_BACKEND}/user`,user);
+      return this.http.post(`${environment.API_BACKEND}/users`,user);
     }
   }
 
   findAll(page: number, count: number){
-    return this.http.get(`${environment.API_BACKEND}/user/${page}/${count}`);
+    return this.http.get(`${environment.API_BACKEND}/users/${page}/${count}`);
   }
   
   findById(id: string){
-    return this.http.get(`${environment.API_BACKEND}/user/${id}`);
+    return this.http.get(`${environment.API_BACKEND}/users/${id}`);
   }
 
   delete(id: string){
-    return this.http.delete(`${environment.API_BACKEND}/api/user/${id}`);
+    return this.http.delete(`${environment.API_BACKEND}/api/users/${id}`);
   }
 }
