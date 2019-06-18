@@ -28,6 +28,10 @@ export class UserService {
   }
 
   delete(id: string){
-    return this.http.delete(`${environment.API_BACKEND}/api/users/${id}`);
+    return this.http.delete(`${environment.API_BACKEND}/users/${id}`);
+  }
+
+  public confirmRegister(token: string){
+    return this.http.get(`${environment.API_BACKEND}/activate/${token}`)
   }
 }

@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { UserModel } from 'src/app/models/user.model';
 import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ResetPasswordComponent } from 'src/app/components/pages/reset-password/reset-password.component';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,8 @@ import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  bsModalRef: BsModalRef;
 
   public username: String = '';
   public password: String = '';
@@ -24,6 +28,7 @@ export class LoginComponent implements OnInit {
   message: string;
 
   constructor(
+    private modalService: BsModalService,
     private alertModalService: AlertModalService,
     private loginService: LoginService,
     private router: Router    
@@ -61,4 +66,11 @@ export class LoginComponent implements OnInit {
       this.message = "Erro";
     });
   }
+
+  openModalWithComponent() {
+   
+    this.bsModalRef = this.modalService.show(ResetPasswordComponent);
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
 }
