@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
 import { ResponseModel } from 'src/app/models/response.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -39,13 +38,13 @@ export class RegisterComponent implements OnInit {
       this.userService.createOrUpdate(this.form.value)
         .subscribe((response: ResponseModel) => {
           if(!response.error){
-            this.alertModalService.showAlertSuccess(response.message)
+            this.router.navigate(['default']);
+            this.alertModalService.showAlertSuccess(response.message);
           }else{
-            this.alertModalService.showAlertDanger(response.message)
-          }
-          
+            this.alertModalService.showAlertDanger(response.message);
+          }          
         }, error => {
-          this.alertModalService.showAlertDanger(error.error.message)
+          this.alertModalService.showAlertDanger(error.error.message);
         });
     }
 
