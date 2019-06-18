@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth.routing.module';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     SharedService,
-    LoginService
+    LoginService,
+    AlertModalService
   ],
 
 })
