@@ -15,11 +15,10 @@
 
 # # add app
 # COPY . /usr/src/app
-
 # # start app
-# CMD ng serve
+# CMD ng serve --host 0.0.0.0
 
-# Stage 0, "build-stage", based on Node.js, to build and compile the frontend
+#Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM tiangolo/node-frontend:10 as build-stage
 WORKDIR /app
 COPY package*.json /app/

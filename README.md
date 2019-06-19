@@ -9,7 +9,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Docker
 
-#Construindo Imagem e rodando a imagem (EXECUTAR UMA VEZ)
+#Construindo Imagem e rodando a imagem (EXECUTAR UMA VEZ) 
 
 docker-compose up -d --build
 

@@ -66,7 +66,7 @@ export class ConfirmResetPasswordComponent implements OnInit {
       email: this.tokenInfo.email,
       password: this.f.password.value,
       password_confirmation: this.f.confirmPassword.value,
-      token: this.tokenInfo.token
+      token: this.tokenInfo.token,
     };
 
     this.submitted = true;
