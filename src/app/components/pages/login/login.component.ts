@@ -16,8 +16,6 @@ import { ResetPasswordComponent } from 'src/app/components/pages/reset-password/
 })
 export class LoginComponent implements OnInit {
 
-  bsModalRef: BsModalRef;
-
   public username: String = '';
   public password: String = '';
 
@@ -68,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   openModalWithComponent() {
-    this.bsModalRef = this.modalService.show(ResetPasswordComponent);
+    const bsModalRef : BsModalRef = this.modalService.show(ResetPasswordComponent);
   }
 
 }

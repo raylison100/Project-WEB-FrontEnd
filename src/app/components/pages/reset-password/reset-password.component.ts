@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PasswordService } from 'src/app/services/password/password.service';
 import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
 import { ResponseModel } from 'src/app/models/response.model';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,6 +17,7 @@ export class ResetPasswordComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   constructor(
+    public bsModalRef: BsModalRef,
     private alertModal: AlertModalService,
     private router: Router,
     private fb: FormBuilder,
@@ -33,6 +35,7 @@ export class ResetPasswordComponent implements OnInit {
     .subscribe((response: ResponseModel) => {
       if(!response.error){
         this.router.navigate(['default']);
+        this.bsModalRef.hide();
         this.alertModal.showAlertSuccess(response.message);
       }else{
         this.alertModal.showAlertDanger(response.message);
