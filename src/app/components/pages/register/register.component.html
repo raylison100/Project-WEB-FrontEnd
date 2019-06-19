@@ -28,13 +28,12 @@
           </div>
           <form class="needs-validation" novalidate [formGroup]="form">
             <div class="form-row">
-
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="text-success fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <input class="form-control" placeholder="Name" type="text" formControlName="name"
-                  [ngClass]="{'is-invalid' : submitted && hasError('name')}" />
+                  [ngClass]="{'is-invalid' : submitted && this.form.get('name').errors}" />
 
                 <div class="invalid-feedback" *ngIf="hasError('name') && hasError('name')['required']">
                   Please name is required.
@@ -46,7 +45,6 @@
                   Max length for name is 30.
                 </div>
               </div>
-
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="text-success fa fa-envelope" aria-hidden="true"></i></span>
@@ -57,16 +55,15 @@
                   Please email is required.
                 </div>
                 <div class="invalid-feedback" *ngIf="hasError('email') && hasError('email')['email']">
-                  Email invalid.
+                  Email is invalid format.
                 </div>
               </div>
-
               <div class="input-group input-group-alternative  mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="text-success fa fa-key" aria-hidden="true"></i></span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password" formControlName="password" 
-                [ngClass]="{'is-invalid' : submitted && hasError('password')}" />
+                <input class="form-control" placeholder="Password" type="password" formControlName="password"
+                  [ngClass]="{'is-invalid' : submitted && hasError('password')}" />
 
                 <div class="invalid-feedback" *ngIf="hasError('password') && hasError('password')['required']">
                   Please password is required.
@@ -78,7 +75,6 @@
                   Max length for password is 15.
                 </div>
               </div>
-
               <div class="row my-4">
                 <div class="col-12">
                   <div class="custom-control custom-control-alternative custom-checkbox">
@@ -90,16 +86,19 @@
                   </div>
                 </div>
               </div>
-
             </div>
-
-            <div class="text-center">
+            <div class="text-center" *ngIf="!loading">
               <button type="submit" class="btn btn-light mt-4 text-success" (click)="registerUser()">
                 Create account
               </button>
             </div>
-
           </form>
+          <div *ngIf="loading" style="margin-top: 10px">
+            <h4 class="fieldset-title text-center text-light">
+              <i class="fa fa-spinner mr-3 fa-spin"></i>
+              Processando solicitação
+            </h4>
+          </div>
         </div>
       </div>
     </div>

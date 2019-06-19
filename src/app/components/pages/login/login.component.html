@@ -26,37 +26,42 @@
           <div class="text-center mb-4">
             <small>Or sign in with credentials</small>
           </div>
-          <form role="form" #form="ngForm" (ngSubmit)="login()">
-            <div class="alert alert-error text-center text-danger" role="alert" *ngIf="message">
-              <strong>Invalid username or password</strong>
-            </div>
+          <form class="needs-validation" novalidate [formGroup]="form" (ngSubmit)="login()">
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
-                <div for="inputUsername" class="input-group-prepend">
+                <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="text-success fa fa-envelope" aria-hidden="true"></i>
                   </span>
                 </div>
-                <input [(ngModel)]="username" id="inputUsername" #usernameModel="ngModel" class="form-control"
-                  name="username" placeholder="Email" type="email" email />
+                <input class="form-control" placeholder="Email" type="email" formControlName="username"
+                  [ngClass]="{'is-invalid' : submitted && hasError('username')}" />
               </div>
-              <div class="text-center text-danger">
-                <span class="help-block" *ngIf="username.invalid && username.dirty">Email is invalid format.
-                </span>
+              <div class="invalid-feedback" *ngIf="hasError('username') && hasError('username')['required']">
+                Please email is required.
+              </div>
+              <div class="invalid-feedback" *ngIf="hasError('username') && hasError('username')['email']">
+                Email is invalid format.
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <div for="inputPassword" class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="text-success fa fa-key" aria-hidden="true"></i>
                   </span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password" name="password"
-                  [(ngModel)]="password" id="inputPassword" #passwordModel="ngModel" type="password" required />
+                <input class="form-control" placeholder="Password" type="password" formControlName="password"
+                  [ngClass]="{'is-invalid' : submitted && hasError('password')}" />
               </div>
-              <div class="text-center text-danger">
-                <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>
+              <div class="invalid-feedback" *ngIf="hasError('password') && hasError('password')['required']">
+                Please password is required.
+              </div>
+              <div class="invalid-feedback" *ngIf="hasError('password') && hasError('password')['minLength']">
+                Min length for password is 8.
+              </div>
+              <div class="invalid-feedback" *ngIf="hasError('password') && hasError('password')['maxLength']">
+                Max length for password is 15.
               </div>
             </div>
             <div class="custom-control custom-control-alternative custom-checkbox">
@@ -65,10 +70,16 @@
                 <span class="text-center">Remember me</span>
               </label>
             </div>
-            <div class="text-center">
+            <div class="text-center" *ngIf="!loading">
               <button type="submit" class="btn btn-light my-4 text-success" [disabled]="!form.valid">
                 Sign in
               </button>
+            </div>
+            <div *ngIf="loading" style="margin-top: 10px">
+              <h4 class="fieldset-title text-center text-light">
+                <i class="fa fa-spinner mr-3 fa-spin"></i>
+                Processando solicitação
+              </h4>
             </div>
             <div class="row mt-3 text-center">
               <div class="col-12">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
+import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
 
 @Component({
   selector: 'app-confirm-register',
@@ -9,32 +11,31 @@ import { ActivatedRoute } from '@angular/router';
 export class ConfirmRegisterComponent implements OnInit {
 
   public token: string;
-  public confirmed: boolean;
   public loading = true;
-  error: boolean;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private userService: UserService,
+    private alertService: AlertModalService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
-    
-    // this.activatedRoute.params.subscribe(
-    //   (params) => { 
-    //     this.token = params.token;
-    //   },
-    //   (error) => { }
-    // );
 
-    // this.registerService.confirmRegister(this.token).subscribe(
-    //   (response) => {
-    //     this.loading = false;
-    //     this.confirmed = true;
-    //   },
-    //   (error) => { 
-    //     this.error = true;
-    //     this.loading = false;
-    //   }
-    // );
+    this.activatedRoute.params.subscribe(
+      (params) => {
+        this.token = params.token;
+      }
+    );
 
+    this.userService.confirmRegister(this.token).subscribe(
+      (response) => {
+        this.loading = false;
+        this.router.navigate(['login']);
+        this.alertService.showAlertSuccess("Cadastro ativado com sucesso",2000)
+      }, error => {
+        this.alertService.showAlertDanger(error.error.message);
+      })
   }
 
 }

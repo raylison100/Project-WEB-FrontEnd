@@ -7,11 +7,10 @@ import { ConfirmRegisterComponent } from 'src/app/components/pages/confirm-regis
 import { ConfirmResetPasswordComponent } from 'src/app/components/pages/confirm-reset-password/confirm-reset-password.component';
 
 export const AuthRoutes: Routes = [
-  { path: 'login',            component: LoginComponent },
-  { path: 'register',         component: RegisterComponent },  
-  { path: 'register/confirm', component: ConfirmRegisterComponent } ,
-  { path: 'password/reset',   component: ConfirmResetPasswordComponent }
-
+  { path: 'login',                    component: LoginComponent },
+  { path: 'register',                 component: RegisterComponent },  
+  { path: 'register/confirm/:token',  component: ConfirmRegisterComponent } ,
+  { path: 'password/reset/:token',    component: ConfirmResetPasswordComponent }
 ];
 
 @NgModule({
@@ -20,4 +19,4 @@ export const AuthRoutes: Routes = [
     ],
     exports: [RouterModule]
   })
-  export class AuthRoutingModule { }
+export class AuthRoutingModule { }

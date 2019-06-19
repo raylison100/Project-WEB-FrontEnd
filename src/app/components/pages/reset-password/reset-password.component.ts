@@ -5,7 +5,6 @@ import { PasswordService } from 'src/app/services/password/password.service';
 import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
 import { ResponseModel } from 'src/app/models/response.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { load } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-reset-password',
@@ -18,6 +17,7 @@ export class ResetPasswordComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   loading = false;
+  
   constructor(
     public bsModalRef: BsModalRef,
     private alertModal: AlertModalService,

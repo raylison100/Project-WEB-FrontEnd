@@ -8,6 +8,7 @@ import { UserModel } from 'src/app/models/user.model';
 import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ResetPasswordComponent } from 'src/app/components/pages/reset-password/reset-password.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,18 +16,19 @@ import { ResetPasswordComponent } from 'src/app/components/pages/reset-password/
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  public username: String = '';
-  public password: String = '';
+  form: FormGroup;
+  submitted  = false
 
   currentAuthLogin$: Observable<CurrentAuthLogin>;
   userModel$: Observable<UserModel>;
 
   shared: SharedService;
   message: string;
+  loading = false;
 
   constructor(
-    private modalService: BsModalService,
+    private fb: FormBuilder,
+    private modalService: BsModalService,    
     private alertModalService: AlertModalService,
     private loginService: LoginService,
     private router: Router    
@@ -36,18 +38,29 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+    this.form = this.fb.group({
+      username: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+    });
+  }
+
+  hasError(field: string) {
+    return this.form.get(field).errors;
   }
 
   login() {
-
-    this.currentAuthLogin$ = this.loginService.login(this.username, this.password);
+    this.loading = true;
+    this.submitted = true;
+    this.currentAuthLogin$ = this.loginService.login(this.form.get('username').value,this.form.get('password').value);
     this.currentAuthLogin$.subscribe((currentAuthLogin: CurrentAuthLogin) => {
       this.shared.token = currentAuthLogin.access_token;
       this.getUser();
     }, err => {
+      this.alertModalService.showAlertWarning('Invalid username or password');
       this.shared.token = null;
       this.shared.user = null;
       this.message = "Erro";
+      this.loading = false;
     });
   }
 
@@ -57,16 +70,17 @@ export class LoginComponent implements OnInit {
       this.shared.user = usermodel;
       this.shared.showTemplate = true
       this.router.navigate(['default'])
+      this.loading = false;
       this.alertModalService.showAlertSuccess('Bem vindo! Usuario logado com sucesso',1500);
     }, err => {
       this.shared.user = null;
       this.shared.showTemplate = false;
       this.message = "Erro";
+      this.loading = false;
     });
   }
 
   openModalWithComponent() {
     const bsModalRef : BsModalRef = this.modalService.show(ResetPasswordComponent);
   }
-
 }

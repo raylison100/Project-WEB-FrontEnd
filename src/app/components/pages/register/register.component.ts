@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
+  loading = false;
 
   constructor(
     private alertModalService: AlertModalService,
@@ -33,17 +34,21 @@ export class RegisterComponent implements OnInit {
 
   registerUser() {
     this.submitted = true;
+    this.loading = true;
     if (this.form.valid) {
       this.userService.createOrUpdate(this.form.value)
         .subscribe((response: ResponseModel) => {
           if(!response.error){
             this.router.navigate(['default']);
             this.alertModalService.showAlertSuccess(response.message);
+            this.loading = false;
           }else{
             this.alertModalService.showAlertDanger(response.message);
+            this.loading = false;
           }          
         }, error => {
-          this.alertModalService.showAlertDanger(error.error.message);
+          this.alertModalService.showAlertDanger(error.error.message)
+          this.loading = false;
         });
     }
 
