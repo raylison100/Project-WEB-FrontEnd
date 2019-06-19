@@ -68,9 +68,7 @@ export class LoginComponent implements OnInit {
   }
 
   openModalWithComponent() {
-   
     this.bsModalRef = this.modalService.show(ResetPasswordComponent);
-    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
 }

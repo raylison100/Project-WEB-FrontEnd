@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PasswordService } from 'src/app/services/password/password.service';
 import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
+import { ResponseModel } from 'src/app/models/response.model';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,51 +11,38 @@ import { AlertModalService } from 'src/app/services/shared/alert-modal.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
+ 
 
-  public emailForm: any;
-  public submitted: boolean;
-  public loading: boolean;
-
+  form: FormGroup;
+  submitted = false;
   constructor(
     private alertModal: AlertModalService,
-    private formBuilder: FormBuilder,
     private router: Router,
+    private fb: FormBuilder,
     private passwordService: PasswordService,
-    ) { }
+  ) { }
 
   ngOnInit() {
-    this.emailForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
+    this.form = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
     });
   }
 
-  get f(){ return this.emailForm.controls; }
-
-  public reset(): void {
-
-    const email = this.f.email.value;
-
-    this.submitted = true;
-    
-    if(this.emailForm.valid) {
-      this.loading = true;
-
-      // this.passwordService.resetPassword(email).subscribe(
-      //   (response) => {
-      //     if(response.status === 404) {
-      //       this.alertModal.showAlertWarning('Verifique o e-mail e tente novamente');
-      //       this.loading = false;
-      //     } else {
-      //       this.alertModal.showAlertSuccess('Um link para redifinir a senha foi enviando para o seu e-mail');
-      //       this.router.navigate(['/login']);
-      //     }
-      //   }, (error) => {
-      //     this.alertModal.showAlertWarning('Verifique o e-mail e tente novamente');
-      //     this.loading = false;
-      //   }
-      // );
-    }
-    
+  public reset() {
+    this.passwordService.resetPassword(this.form.value)
+    .subscribe((response: ResponseModel) => {
+      if(!response.error){
+        this.router.navigate(['default']);
+        this.alertModal.showAlertSuccess(response.message);
+      }else{
+        this.alertModal.showAlertDanger(response.message);
+      }          
+    }, error => {
+      this.alertModal.showAlertDanger(error.error.message);
+    });
   }
 
+  hasError(field: string) {
+    return this.form.get(field).errors;
+  }
 }
