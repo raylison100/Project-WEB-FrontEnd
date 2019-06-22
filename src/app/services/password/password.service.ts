@@ -14,14 +14,13 @@ export class PasswordService {
 
   public confirmPassword(requestData: any) {
     return this.http.post(
-      `${environment.API_BACKEND}/password/reset`,
-      requestData
+      `${environment.API_BACKEND}/password/reset`,requestData
     );
   }
 
   public checkResetToken(token: string) {
     return this.http.get(
-      `${environment.API_BACKEND}/api/provider/password/find/${token}`
+      `${environment.API_BACKEND}/password/find/${token}`
     );
   }
 }
