@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/services/shared/shared.service';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  shared: SharedService;
+  user: UserModel;
+
+  constructor() {
+    this.shared = SharedService.getInstance()
+   }
 
   ngOnInit() {
+    this.user = this.shared.user;
   }
 
 }
