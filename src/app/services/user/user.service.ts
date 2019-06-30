@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UserModel } from 'src/app/models/user.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
+import { UserModel } from 'src/app/models/user.model';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -10,28 +11,28 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  createOrUpdate(user: UserModel){
-    if(user.id != null && user.id != ''){
-        return this.http.put(`${environment.API_BACKEND}/users`,user);
-    }else{
-      user.id = null;
-      return this.http.post(`${environment.API_BACKEND}/users`,user);
-    }
+  create(user: UserModel) {
+    user.id = null;
+    return this.http.post(`${environment.API_BACKEND}/users`, user);
   }
 
-  findAll(page: number, count: number){
+  update(user: any, id: string) {
+     return this.http.put(`${environment.API_BACKEND}/users/${id}`, user);
+  }
+
+  findAll(page: number, count: number) {
     return this.http.get(`${environment.API_BACKEND}/users/${page}/${count}`);
   }
-  
-  findById(id: string){
-    return this.http.get(`${environment.API_BACKEND}/users/${id}`);
+
+  findById(id: string) {
+    return this.http.get(`${environment.API_BACKEND}/users/`);
   }
 
-  delete(id: string){
+  delete(id: string) {
     return this.http.delete(`${environment.API_BACKEND}/users/${id}`);
   }
 
-  public confirmRegister(token: string){
+  public confirmRegister(token: string) {
     return this.http.get(`${environment.API_BACKEND}/activate/${token}`)
   }
 }

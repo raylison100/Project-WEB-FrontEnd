@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -15,7 +14,6 @@ import { NavComponent } from './components/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedService } from './services/shared/shared.service';
 import { SharedModule } from './modules/shared/shared.module';
-import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,21 +21,21 @@ import { AlertModalComponent } from './components/alert-modal/alert-modal.compon
     NavComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule,    
+    RouterModule,
     SharedModule,
     AdminModule,
     AuthModule,
   ],
   providers: [
-   SharedService
+    SharedService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

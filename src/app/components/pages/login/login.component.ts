@@ -18,7 +18,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   submitted  = false
-
+  
   currentAuthLogin$: Observable<CurrentAuthLogin>;
   userModel$: Observable<UserModel>;
 

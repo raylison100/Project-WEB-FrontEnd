@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.form.valid) {
-      this.userService.createOrUpdate(this.form.value)
+      this.userService.create(this.form.value)
         .subscribe((response: ResponseModel) => {
           if(!response.error){
             this.router.navigate(['default']);

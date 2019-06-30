@@ -8,6 +8,8 @@ import { ProfileComponent } from '../../components/pages/profile/profile.compone
 import { FooterComponent } from '../../components/footer/footer.component';
 import { UserService } from 'src/app/services/user/user.service';
 import { SharedService } from 'src/app/services/shared/shared.service';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +20,10 @@ import { SharedService } from 'src/app/services/shared/shared.service';
     FooterComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
+    CarouselModule,
     AdminRoutingModule
   ],
   providers: [
